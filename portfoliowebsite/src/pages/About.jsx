@@ -11,7 +11,7 @@ const About = () => {
                 <h2>About Me</h2>
             </div>
         </div>
-    )
+    );
 }
 
-export default About
+export default About;
