@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Notable&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+/* ---------------------------------------------
+   Design tokens
+--------------------------------------------- */
+:root {
+  --font-heading: 'Notable', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+
+  --color-bg: #faf9f7;
+  --color-bg-raised: #ffffff;
+  --color-ink: #111114;
+  --color-muted: #63636b;
+  --color-line: #e4e2de;
+
+  --color-accent: #7e14ff;
+  --color-accent-ink: #ffffff;
+  --color-accent-soft: #ede6ff;
+
+  --shadow-soft: 0 1px 2px rgba(17, 17, 20, 0.04);
+  --shadow-lift: 0 18px 40px -20px rgba(17, 17, 20, 0.35);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+  --space-7: 9rem;
+
+  --fs-hero: clamp(2.75rem, 3.4vw + 2rem, 6.5rem);
+  --fs-h1: clamp(2.1rem, 1.6vw + 1.6rem, 3.25rem);
+  --fs-h2: clamp(1.6rem, 1vw + 1.3rem, 2.25rem);
+  --fs-h3: clamp(1.15rem, 0.4vw + 1.05rem, 1.4rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+
+  --container-w: 1180px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121114;
+    --color-bg-raised: #1a191d;
+    --color-ink: #f3f2f0;
+    --color-muted: #a2a0a8;
+    --color-line: #2c2a30;
+    --color-accent: #a25bff;
+    --color-accent-ink: #121114;
+    --color-accent-soft: #241c33;
+    --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color-scheme: dark;
+  }
+}
+
+/* ---------------------------------------------
+   Reset
+--------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+/* subtle film-grain texture over the whole page — brutalist paper feel */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main,
+#root > *:not(nav):not(footer) {
+  flex: 1;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------
+   Typography
+--------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-2);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+h4 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+p {
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.placeholder {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* ---------------------------------------------
+   Layout utilities
+--------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-w);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* ---------------------------------------------
+   Buttons / pills
+--------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-raised);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), background 0.25s var(--ease-out), color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+}
+
+.pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.pill-solid {
+  background: var(--color-ink);
+  color: var(--color-bg);
+  border-color: var(--color-ink);
+}
+
+.pill-solid:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

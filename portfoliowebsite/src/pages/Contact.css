@@ -1,18 +1,4 @@
-.interestChip {
-    display: inline-block;
-    padding: 0.5rem 1.2rem;
-    border-radius: 999px;
-    background: #f4f4f5;
-    color: #18181b;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid #e4e4e7;
-    transition: all 0.2s ease;
-}
-
-.interestChip:hover {
-    background: #18181b;
-    color: #fafafa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.contact {
+  padding-block: var(--space-6) var(--space-5);
+  max-width: 780px;
 }

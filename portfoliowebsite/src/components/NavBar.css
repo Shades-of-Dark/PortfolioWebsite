@@ -1,9 +1,76 @@
-.navLink {
-  color: #52525b;
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem clamp(1.5rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-line);
+}
 
+.navBrand .navLink {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.navBrand h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.navBrand .navLink::after {
+  display: none;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2vw, 2.25rem);
+}
+
+.navLink {
+  position: relative;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  text-decoration: none;
+  padding-bottom: 0.35rem;
+  transition: color 0.2s var(--ease-out);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--color-accent);
+  transition: width 0.3s var(--ease-out);
+}
+
+.navLink:hover {
+  color: var(--color-ink);
+}
+
+.navLink:hover::after {
+  width: 100%;
 }
 
 .activeLink {
-  color: #18181b;
-  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.activeLink::after {
+  width: 100%;
 }

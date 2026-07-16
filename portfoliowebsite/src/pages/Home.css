@@ -1,0 +1,13 @@
+.hero {
+  min-height: calc(100vh - 5.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-5);
+}
+
+.hero p {
+  max-width: 46ch;
+  color: var(--color-muted);
+  font-size: 1.1rem;
+}

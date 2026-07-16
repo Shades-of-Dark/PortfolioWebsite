@@ -1,0 +1,49 @@
+.work {
+  padding-block: var(--space-6) var(--space-5);
+  max-width: 780px;
+}
+
+.workSection {
+  border-top: 1px solid var(--color-line);
+  padding-block: var(--space-3);
+}
+
+.workSection h4 {
+  color: var(--color-muted);
+}
+
+.projectList {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.projectCard {
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  padding: var(--space-3);
+  background: var(--color-bg-raised);
+}
+
+.projectName {
+  margin-bottom: 0.35rem;
+}
+
+.projectMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: var(--space-2);
+}
+
+.projectTech {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
